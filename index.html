@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f7f2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>学习足迹</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">我的学习记录</p>
+          <h1>学习足迹</h1>
+          <p class="subtitle">记录今天的一点进步。</p>
+        </div>
+        <section class="total-card" aria-label="累计学习时长">
+          <span>累计学习</span>
+          <strong id="total-time">0 分钟</strong>
+        </section>
+      </header>
+
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">新记录</p>
+            <h2 id="form-title">今天学了什么？</h2>
+          </div>
+        </div>
+
+        <form id="study-form">
+          <div class="form-grid">
+            <label>
+              <span>学习科目</span>
+              <input id="subject" name="subject" type="text" maxlength="30" placeholder="例如：英语" autocomplete="off" required />
+            </label>
+            <label>
+              <span>学习时长（分钟）</span>
+              <input id="duration" name="duration" type="number" min="1" max="1440" inputmode="numeric" placeholder="例如：45" required />
+            </label>
+            <label class="content-field">
+              <span>学习内容</span>
+              <textarea id="content" name="content" rows="3" maxlength="200" placeholder="例如：复习了第三单元的单词" required></textarea>
+            </label>
+          </div>
+          <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">＋</span> 添加学习记录
+          </button>
+        </form>
+      </section>
+
+      <section class="records-section" aria-labelledby="records-title">
+        <div class="section-heading records-heading">
+          <div>
+            <p class="section-kicker">学习历程</p>
+            <h2 id="records-title">最近记录</h2>
+          </div>
+          <span id="record-count" class="count-badge">0 条</span>
+        </div>
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon" aria-hidden="true">✦</div>
+          <h3>还没有学习记录</h3>
+          <p>填写上面的内容，留下第一条学习足迹吧。</p>
+        </div>
+        <ul id="record-list" class="record-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="record-template">
+      <li class="record-card">
+        <div class="record-accent" aria-hidden="true"></div>
+        <div class="record-body">
+          <div class="record-topline">
+            <div>
+              <h3 class="record-subject"></h3>
+              <time class="record-date"></time>
+            </div>
+            <span class="duration-pill"></span>
+          </div>
+          <p class="record-content"></p>
+        </div>
+        <button class="delete-button" type="button" aria-label="删除记录">删除</button>
+      </li>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
